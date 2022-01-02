@@ -130,3 +130,20 @@ var getFiveDay = function (lat, lon) {
     }
   });
 };
+// load search-history and update history buttons
+var loadHistory = function () {
+  cityHistory = localStorage.getItem("cityHistory");
+  cityHistory = JSON.parse(cityHistory);
+  if (!cityHistory) {
+    cityHistory = [];
+    return;
+  } else {
+    for (var i = 0; i < cityHistory.length; ++i) {
+      var historyEl = document.createElement("p");
+      historyEl.textContent = cityHistory[i];
+      historyEl.classList =
+        "search-history list-group-item btn btn-light border border-black-50 col-6 col-md-12 mb-1 overflow-hidden";
+      $("#search-container").append(historyEl);
+    }  
+  }
+};r
