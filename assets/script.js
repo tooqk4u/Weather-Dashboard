@@ -28,7 +28,7 @@ let citySubmitHandler = function (event) {
 $("#search-container").on("submit", citySubmitHandler);
 
 // toggle weather condition icons
-var conditionSet = function (dataSet) {                 
+let conditionSet = function (dataSet) {
   switch (dataSet) {
     case "Thunderstorm":
       weather = " <img src='./assets/images/thunder.svg' />";
@@ -184,37 +184,41 @@ let loadHistory = function () {
     cityHistory = [];
     return;
   } else {
-    for (var i = 0; i < cityHistory.length; ++i) {
+    for (let i = 0; i < cityHistory.length; ++i) {
       let historyEl = document.createElement("p");
       historyEl.textContent = cityHistory[i];
       historyEl.classList =
         "search-history list-group-item btn btn-light border border-black-50 col-6 col-md-12 mb-1 overflow-hidden";
       $("#search-container").append(historyEl);
-    }  
+    }
+  }
+};
+// function to get weather of search history term
+let getPrevious = function () {
+  let historySearch = $(this).text().trim();
+  getWeatherData(historySearch);
+};
+// function updates search history and localStorage
+let updateHistory = function (location) {
+  if (cityHistory.includes(location)) {
+    return;
+  } else {
+    cityHistory.push(location);
+
+    if (cityHistory.length > 8) {
+      cityHistory.shift();
+    }
+    localStorage.setItem("cityHistory", JSON.stringify(cityHistory));
+    // search history clear function to load updated list from loadHistory
+    $(".search-history").each(function () {
+      $(this).remove();
+    });
+    loadHistory();
   }
 };
 
+// function call to loadHistory on page load
+loadHistory();
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+// search history listener !
+$("#search-container").on("click", ".search-history", getPrevious);
