@@ -1,0 +1,58 @@
+header {    
+  background-color:rgb(30, 30, 161);
+  text-align: center;
+  color: white;
+  font-weight: bolder;    
+  
+}
+.container {
+  height: 100%
+}
+.forecast {
+  text-align: center;
+}
+.headers {
+  text-align: center;
+  font-size: 35px;
+}   
+#currentDay {
+  text-align: center;
+  color: white;
+  font-weight: bold;
+}
+.rows {
+  width: 100%;
+  height: 100%;
+  color: white;
+  font-size: bolder;
+  background-color:  rgb(30, 30, 161);
+}
+footer {
+  text-align: center;
+  color:navy;
+  
+  left: 0;
+  bottom: 0;
+  width: 100%;
+}
+.cards {
+  height:40%
+}
+#location{
+  
+font-size: 20px;
+font-weight: bolder;
+text-align: center;
+height: 25%;
+
+}
+div .card p {
+  font-size: 15px;
+  text-align: center;
+  
+}
+
+img {
+  height: 50px;
+}
+
