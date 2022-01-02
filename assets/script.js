@@ -91,3 +91,42 @@ let getWeatherData = function (city) {
     }
   });
 };
+// function for the five day forecast
+var getFiveDay = function (lat, lon) {
+  fetch(
+    "https://api.openweathermap.org/data/2.5/onecall?lat=" +
+      lat +
+      "&lon=" +
+      lon +
+      "&exclude=minutely,hourly&units=" +
+      units +
+      "&appid=" +
+      appId
+  ).then(function (response) {
+    if (response.ok) {
+      response.json().then(function (data) {
+        var fiveDay = data.daily;
+        fiveDay.splice(6);
+        fiveDay.shift();
+        var i = 0;
+        var x = 1;
+        $(".fiveDay").each(function () {
+          $(this)
+            .children(".fiveDay-temp")
+            .text("Temp: " + Math.round(fiveDay[i].temp.day) + tempUnitDisplay);
+          $(this)
+            .children(".fiveDay-hum")
+            .text("Hum: " + fiveDay[i].humidity + "%");
+          conditionSet(fiveDay[i].weather[0].main);
+          $(this).children(".fiveDay-condition").html(weather);
+          var forecastDate = moment().add(x, "days").format(fiveDateFormat);
+          $(this).children(".fiveDay-date").text(forecastDate);
+          ++x;
+          ++i;
+        });
+      });
+    } else {
+      alert("Unable to display five day forecast. Please try again");
+    }
+  });
+};
