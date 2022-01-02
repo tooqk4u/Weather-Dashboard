@@ -1,91 +1,105 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+<head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link
+  rel="stylesheet"
+  href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
+  <link
+  rel="stylesheet"
+  href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2
++nqUivzIebhndOJK28anvf"crossorigin="anonymous"/>
+  <link
+  href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="./assets/style.css" />
     <title>Weather Dashboard</title>
-  </head>
-  <body>
-    <header class="py-2 pl-md-5" >
-      <h1 >Weather Dashboard </h1>
-      <h5 id="currentDay" ></h5>
+</head>
+
+<body> 
+  <header class="py-2 pl-md-5" >
+    <h1 >Weather Dashboard </h1>
+    <h5 id="currentDay" ></h5>
+         
+     <h6>Find the weather in any city</h6>    
+  </header>
+
+  <section class="py-3" >
+  <!--Content container-->
+    <div class="col-12 d-md-flex flex-lg-row pt-md-3" >   
+  <!--Search Box and History container-->       
+      <div class="col-md-3 px-2"  > 
+  <!--City Search box and Search History button-->
+        <form class="row mt-2 d-md-flex flex-md-col bg-light p-10"id="search-container">
+          <h2 class="citysearch">SEARCH FOR A CITY</h2>        
+          <input type="text" placeholder="NAME OF CITY" id="searchBar" class="form-control col-9 mb-2"/> 
+          <button class="btn btn-primary text-light border-0 ml-1 mb-2" id="searchBtn" type="submit">Search</button>
+        </form>      
+     </div>        
+  <!--Current and FiveDay Container-->
+     <div class="col-12 col-md-9 container" style= "border: 10px solid blue"> 
+
+       <!--CurrentDay container-->       
+       <div id="current-container"  >  
+        <h2 class="headers">TODAY'S FORECAST</h2>
              
-      <h6>Find the weather in any city</h6>
-    <header>
-    <section class="py-3" >
-        <!--Content container-->
-      <div class="col-12 d-md-flex flex-lg-row pt-md-3" >   
-          <!--Search Box and History container-->       
-        <div class="col-md-3 px-2"  > 
-            <!--City Search box and Search History button-->
-          <form class="row mt-2 d-md-flex flex-md-col bg-light p-10" id="search-container" >
-            <h2 class="citysearch">SEARCH FOR A CITY</h2>        
-            <input type="text" placeholder="NAME OF CITY" id="searchBar" class="form-control col-9 mb-2"/>                  
-            <button class="btn btn-primary text-light border-0 ml-1 mb-2" id="searchBtn"type="submit">Search</button>
-          </form>      
-        </div>        
-          <!--Current and FiveDay Container-->
-        <div class="col-12 col-md-9 container" style= "border: 10px solid blue"> 
-            <!--CurrentDay container-->       
-          <div id="current-container" style= "border: 10px solid red" >
-            <h2 class="headers">TODAY'S FORECAST</h2>                 
-            <div class="card border-0"> 
-              <h2 id="location" class="overflow-hidden" ></h2> 
-                         
-                <p id ='temperature' >Temp:</p>          
-                <p id='humidity'>Humidity:</p>
-                <p id='windspeed'>Wind Speed:</p>
-                <p id='uv'>UV Index:</p>
-            </div> 
-          </div>
-          <!--5 Day Forecast-->
-          <h3 class="forecast">5-Day Forecast</h3>
-          <!--5 Day Container-->    
-          <div class="col-12 d-md-flex flex-lg-row justify-content-between pt-md-3 text-light cards" style= "border: 10px dashed black">
-          
-            <!--Day 1 Forecast-->
-            <div class="fiveDay rows" style= "border: 5px solid purple">
-              <p class="fiveDay-date">Date</p>  
-              <p class="fiveDay-condition"></p>        
-              <p class="fiveDay-temp">Temp:</p>
-              <p class="fiveDay-hum">Humidity:</p>         
-            </div>
-            <!--Day 2 Forecast-->
-            <div class="fiveDay rows" style= "border: 5px solid purple">
-              <p class="fiveDay-date">Date</p> 
-              <p class="fiveDay-condition"></p>
-              <p class="fiveDay-temp">Temp:</p>
-              <p class="fiveDay-hum">Humidity:</p>          
-            </div>
-            <!--Day 3 Forecast-->
-            <div class="fiveDay rows" style= "border: 5px solid purple">
-              <p class="fiveDay-date">Date</p> 
-              <p class="fiveDay-condition"></p>
-              <p class="fiveDay-temp">Temp:</p>
-              <p class="fiveDay-hum">Hum:</p>      
-            </div>
-            <!--Day 4 Forecast-->
-            <div class="fiveDay rows"style= "border: 5px solid purple">
-              <p class="fiveDay-date">Date</p> 
-              <p class="fiveDay-condition"></p>
-              <p class="fiveDay-temp">Temp:</p>
-              <p class="fiveDay-hum">Humidity:</p>   
-            </div>
-            <!--Day 5 Forecast-->
-            <div class="fiveDay rows"style= "border: 5px solid purple">
-              <p class="fiveDay-date">Date</p> 
-              <p class="fiveDay-condition"></p>
-              <p class="fiveDay-temp">Temp:</p>
-              <p class="fiveDay-hum">Humidity:</p>           
-            </div>        
+        <div class="card border-0"> 
+            <h2 id="location" class="overflow-hidden" >Current Weather</h2>                      
+            <p id ='temperature' >Temp:</p>          
+            <p id='humidity'>Humidity:</p>
+            <p id='windspeed'>Wind Speed:</p>
+            <p id='uv'>UV Index:</p>
         </div> 
       </div>
-    </section> 
-      <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
-      <script src="./assets/script.js"></script>
-      <footer> <h5>☀️ &copy;2021 by tooqk4u ☀️</h5></footer>
+
     
-  </body>
-</html>
+<!--5 Day Forecast-->
+      <h3 class="forecast">5-Day Forecast</h3>
+<!--5 Day Container-->    
+      <div class="col-12 d-md-flex flex-lg-row justify-content-between pt-md-3 text-light cards" >
+      
+        <!--Day 1 Forecast-->
+        <div class="fiveDay rows" style= "border: 5px solid white">
+          <p class="fiveDay-date">Date</p>  
+          <p class="fiveDay-condition"></p>        
+          <p class="fiveDay-temp">Temp:</p>
+          <p class="fiveDay-hum">Humidity:</p>         
+        </div>
+        <!--Day 2 Forecast-->
+        <div class="fiveDay rows" style= "border: 5px solid white">
+          <p class="fiveDay-date">Date</p> 
+          <p class="fiveDay-condition"></p>
+          <p class="fiveDay-temp">Temp:</p>
+          <p class="fiveDay-hum">Humidity:</p>          
+        </div>
+        <!--Day 3 Forecast-->
+        <div class="fiveDay rows" style= "border: 5px solid white">
+          <p class="fiveDay-date">Date</p> 
+          <p class="fiveDay-condition"></p>
+          <p class="fiveDay-temp">Temp:</p>
+          <p class="fiveDay-hum">Hum:</p>      
+        </div>
+        <!--Day 4 Forecast-->
+        <div class="fiveDay rows"style= "border: 5px solid white">
+          <p class="fiveDay-date">Date</p> 
+          <p class="fiveDay-condition"></p>
+          <p class="fiveDay-temp">Temp:</p>
+          <p class="fiveDay-hum">Humidity:</p>   
+        </div>
+        <!--Day 5 Forecast-->
+        <div class="fiveDay rows"style= "border: 5px solid white">
+          <p class="fiveDay-date">Date</p> 
+          <p class="fiveDay-condition"></p>
+           <p class="fiveDay-temp">Temp:</p>
+          <p class="fiveDay-hum">Humidity:</p>           
+        </div>        
+      </div> 
+    </div>
+   </section> 
+   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+   <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
+   <script src="./assets/script.js"></script>
+   <footer> <h5>☀️ &copy;2021 by tooqk4u ☀️</h5></footer>
+ </body>
+</html>  
