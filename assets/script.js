@@ -12,10 +12,6 @@ let showTime = document.getElementById("currentDay");
 showTime.innerHTML = currentTime;
 console.log(currentTime);
 
-// search submission listener
-$("#search-container").on("submit", citySubmitHandler);
-
-
 // function for city search
 let citySubmitHandler = function (event) {
   event.preventDefault();
@@ -27,6 +23,56 @@ let citySubmitHandler = function (event) {
     alert("Please enter a city.");
   }
 };
+
+// search submission listener
+$("#search-container").on("submit", citySubmitHandler);
+
+// toggle weather condition icons
+var conditionSet = function (dataSet) {                 
+  switch (dataSet) {
+    case "Thunderstorm":
+      weather = " <img src='./assets/images/thunder.svg' />";
+      break;
+    case "Drizzle":
+      weather = " <img src='./assets/images/drizzle.svg' />";
+      break;
+    case "Mist":
+      weather = " <img src='./assets/images/mist.svg' />";
+      break;
+    case "Rain":
+      weather = " <img src='./assets/images/rain.svg' />";
+      break;
+    case "Snow":
+      weather = " <img src='./assets/images/snow.svg' />";
+      break;
+    case "Overcast":
+      weather = " <img src='./assets/images/overcast.svg' />";
+      break;
+    case "Sunny":
+      weather = " <img src='./assets/images/sunny.svg' />";
+      break;
+    case "Fog":
+      weather = " <img src='./assets/images/fog.svg' />";
+      break;
+    case "Sleet":
+      weather = " <img src='./assets/images/sleet.svg' />";
+      break;
+    case "Clouds":
+      weather = " <img src='./assets/images/clouds.svg' />";
+      break;
+    case "Windy":
+      weather = " <img src='./assets/images/wind.svg' />";
+      break;
+    case "Tornado":
+      weather = " <img src='./assets/images/tornado.svg' />";
+      break;
+    default:
+      "Default                      ";
+      weather = " <img src='./assets/images/sunny.svg'/>";
+      break;
+  }
+};
+
 // get current weather data and call uv index and 5 day forecast
 // also sets location for search history
 let getWeatherData = function (city) {
@@ -92,7 +138,7 @@ let getWeatherData = function (city) {
   });
 };
 // function for the five day forecast
-var getFiveDay = function (lat, lon) {
+let getFiveDay = function (lat, lon) {
   fetch(
     "https://api.openweathermap.org/data/2.5/onecall?lat=" +
       lat +
@@ -105,11 +151,11 @@ var getFiveDay = function (lat, lon) {
   ).then(function (response) {
     if (response.ok) {
       response.json().then(function (data) {
-        var fiveDay = data.daily;
+        let fiveDay = data.daily;
         fiveDay.splice(6);
         fiveDay.shift();
-        var i = 0;
-        var x = 1;
+        let i = 0;
+        let x = 1;
         $(".fiveDay").each(function () {
           $(this)
             .children(".fiveDay-temp")
@@ -119,7 +165,7 @@ var getFiveDay = function (lat, lon) {
             .text("Hum: " + fiveDay[i].humidity + "%");
           conditionSet(fiveDay[i].weather[0].main);
           $(this).children(".fiveDay-condition").html(weather);
-          var forecastDate = moment().add(x, "days").format(fiveDateFormat);
+          let forecastDate = moment().add(x, "days").format(fiveDateFormat);
           $(this).children(".fiveDay-date").text(forecastDate);
           ++x;
           ++i;
@@ -131,7 +177,7 @@ var getFiveDay = function (lat, lon) {
   });
 };
 // load search-history and update history buttons
-var loadHistory = function () {
+let loadHistory = function () {
   cityHistory = localStorage.getItem("cityHistory");
   cityHistory = JSON.parse(cityHistory);
   if (!cityHistory) {
@@ -139,11 +185,36 @@ var loadHistory = function () {
     return;
   } else {
     for (var i = 0; i < cityHistory.length; ++i) {
-      var historyEl = document.createElement("p");
+      let historyEl = document.createElement("p");
       historyEl.textContent = cityHistory[i];
       historyEl.classList =
         "search-history list-group-item btn btn-light border border-black-50 col-6 col-md-12 mb-1 overflow-hidden";
       $("#search-container").append(historyEl);
     }  
   }
-};r
+};
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
