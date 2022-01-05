@@ -85,7 +85,7 @@ let getWeatherData = function (city) {
       appId
   ).then(function (response) {
     if (response.ok) {
-      response.json().then(function (data) {
+        response.json().then(function (data) {
         conditionSet(data.weather[0].main);
         let lat = data.coord.lat;
         let lon = data.coord.lon;
@@ -96,9 +96,7 @@ let getWeatherData = function (city) {
           "Temperature: " + data.main.temp.toFixed(1) + " " + tempUnitDisplay
         );
         $("#humidity").text("Humidity: " + data.main.humidity + "%");
-        $("#windspeed").text(
-          "Wind Speed: " + data.wind.speed + " " + speedUnitDisplay
-        );
+        $("#windspeed").text("Wind Speed: " + data.wind.speed + " " + speedUnitDisplay);
         getFiveDay(lat, lon);
         updateHistory(location);
         fetch(
@@ -163,6 +161,9 @@ let getFiveDay = function (lat, lon) {
           $(this)
             .children(".fiveDay-hum")
             .text("Hum: " + fiveDay[i].humidity + "%");
+          $(this)
+            .children(".fiveDay-wind")
+            .text("Wind: " + fiveDay[i].wind_speed + " MPH")
           conditionSet(fiveDay[i].weather[0].main);
           $(this).children(".fiveDay-condition").html(weather);
           let forecastDate = moment().add(x, "days").format(fiveDateFormat);

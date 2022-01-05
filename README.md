@@ -23,4 +23,3 @@ heavily on a library I am being told is becoming obsolete.. I really did not hav
 which is a first.
 
 The items I would like to add to improve this project is connect the weathermaps API for icons because to list all the conditions in the app thru the switch statement is tedious. Also the UV index API I used is deprecated so I would instead change that part of the code to access the newer API that is not deprecated. 
-In addition I would like to make is so the user can either click the search button or hit enter to submit their city of choice.
